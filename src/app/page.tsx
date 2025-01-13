@@ -8,34 +8,34 @@ import { Skills } from '@/components/skills'
 import { Work } from '@/components/work'
 import { Github } from 'lucide-react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const projects = [
   {
     title: "Restaurant-webapp",
     description: "A modern web application built with React and Next.js",
-    image: "/Screenshot 2025-01-13 234450.png",
+    image: "/restaurant-webapp.png", // Ensure this file exists in the public folder
     technologies: ["html", "css", "javascript", "react", "firebase"],
     githubUrl: "https://github.com/Nishant2233/Restaurant-webapp-React",
   },
   {
     title: "Multilingual ChatApp",
     description: "A chat application with support for multiple languages",
-    image: "Screenshot 2025-01-14 002624.png",
+    image: "/multilingual-chatapp.png", // Ensure this file exists in the public folder
     technologies: ["nextjs", "typescript", "tailwind", "firebase", "API"],
     githubUrl: "https://github.com/Nishant2233/MultilingualChat-App",
   },
   {
     title: "Support Genie",
     description: "Full-stack application with modern architecture and AI integration",
-    image:
-      "Screenshot 2024-09-24 190830.png",
+    image: "/support-genie.png", // Ensure this file exists in the public folder
     technologies: ["react", "nodejs", "mongodb", "express", "open AI"],
     githubUrl: "https://github.com/Nishant2233",
   },
-]
+];
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false)
+ 
   const { theme } = useTheme()
   const [showPopup, setShowPopup] = useState(false)
   const [formData, setFormData] = useState({
@@ -45,7 +45,7 @@ export default function Home() {
   })
 
   useEffect(() => {
-    setIsLoaded(true)
+    
   }, [])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -98,12 +98,16 @@ export default function Home() {
                   }`}
                 >
                   <div className="aspect-video overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="object-cover transition-transform hover:scale-105"
-                    />
-                  </div>
+  <Image
+    src={project.image}
+    alt={project.title}
+    layout="fill" // Ensures the image fills the container
+    objectFit="cover" // Ensures the image scales properly
+    className="transition-transform hover:scale-105"
+    priority={i === 0} // Optimize the first project image for LCP
+  />
+</div>
+
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="text-xl font-semibold">{project.title}</h3>

@@ -40,7 +40,7 @@ export function Hero() {
         transition={{ delay: 0.3, duration: 0.8 }}
         className="mb-2 text-2xl"
       >
-        Hi! I'm Nishant Rathod <span className="inline-block animate-wave">👋</span>
+        Hi! I&#39;m Nishant Rathod <span className="inline-block animate-wave">👋</span>
       </motion.h1>
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
