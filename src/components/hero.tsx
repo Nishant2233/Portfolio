@@ -73,7 +73,7 @@ export function Hero() {
           view project
         </Button>
         <a
-          href="https://nodejs.org/en"
+          href="https://drive.google.com/file/d/1PnLoeovmW4I29bNBkKFbA15gm9c5pS2H/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="min-w-[150px]"

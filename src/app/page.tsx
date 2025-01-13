@@ -6,37 +6,72 @@ import { Navbar } from '@/components/navbar'
 import { Hero } from '@/components/hero'
 import { Skills } from '@/components/skills'
 import { Work } from '@/components/work'
-import { Github, FileText } from 'lucide-react'
+import { Github } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const projects = [
   {
-    title: "Project 1",
+    title: "Restaurant-webapp",
     description: "A modern web application built with React and Next.js",
-    image: "https://sjc.microlink.io/2IowFyv0sfbkDI86zcisEkEB_E4OmsxaFsJv94o16SNxAKkRytdiIOADPJ1L9i3Hmt27QcYeS51kA-gtX_BPtA.jpeg",
-    technologies: ["html", "css", "javascript", "react"]
+    image: "/Screenshot 2025-01-13 234450.png",
+    technologies: ["html", "css", "javascript", "react", "firebase"],
+    githubUrl: "https://github.com/Nishant2233/Restaurant-webapp-React",
   },
   {
-    title: "Project 2",
-    description: "E-commerce platform with dynamic features",
-    image: "https://sjc.microlink.io/2IowFyv0sfbkDI86zcisEkEB_E4OmsxaFsJv94o16SNxAKkRytdiIOADPJ1L9i3Hmt27QcYeS51kA-gtX_BPtA.jpeg",
-    technologies: ["nextjs", "typescript", "tailwind"]
+    title: "Multilingual ChatApp",
+    description: "A chat application with support for multiple languages",
+    image: "Screenshot 2025-01-14 002624.png",
+    technologies: ["nextjs", "typescript", "tailwind", "firebase", "API"],
+    githubUrl: "https://github.com/Nishant2233/MultilingualChat-App",
   },
   {
-    title: "Project 3",
-    description: "Full-stack application with modern architecture",
-    image: "https://sjc.microlink.io/2IowFyv0sfbkDI86zcisEkEB_E4OmsxaFsJv94o16SNxAKkRytdiIOADPJ1L9i3Hmt27QcYeS51kA-gtX_BPtA.jpeg",
-    technologies: ["react", "nodejs", "mongodb"]
-  }
+    title: "Support Genie",
+    description: "Full-stack application with modern architecture and AI integration",
+    image:
+      "Screenshot 2024-09-24 190830.png",
+    technologies: ["react", "nodejs", "mongodb", "express", "open AI"],
+    githubUrl: "https://github.com/Nishant2233",
+  },
 ]
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
   const { theme } = useTheme()
+  const [showPopup, setShowPopup] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
 
   useEffect(() => {
     setIsLoaded(true)
   }, [])
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setShowPopup(true)
+
+    // Clear the form data
+    setFormData({
+      name: '',
+      email: '',
+      message: '',
+    })
+
+    // Hide the popup after 3 seconds
+    setTimeout(() => {
+      setShowPopup(false)
+    }, 3000)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }))
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -73,7 +108,7 @@ export default function Home() {
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="text-xl font-semibold">{project.title}</h3>
                       <a
-                        href="https://github.com/yourusername"
+                        href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:text-primary/80 transition-colors"
@@ -106,13 +141,15 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
             <div className="max-w-xl mx-auto">
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">
                     Name
                   </label>
                   <input
                     id="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="w-full px-4 py-2 rounded-md border bg-card"
                     placeholder="Your name"
                   />
@@ -124,6 +161,8 @@ export default function Home() {
                   <input
                     id="email"
                     type="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="w-full px-4 py-2 rounded-md border bg-card"
                     placeholder="Your email"
                   />
@@ -134,6 +173,8 @@ export default function Home() {
                   </label>
                   <textarea
                     id="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     className="w-full px-4 py-2 rounded-md border bg-card min-h-[150px]"
                     placeholder="Your message"
                   />
@@ -164,7 +205,12 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      {/* Popup */}
+      {showPopup && (
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-md shadow-md">
+          Thanks, your message has been sent!
+        </div>
+      )}
     </div>
   )
 }
-

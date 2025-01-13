@@ -8,7 +8,7 @@ const workExperience = [
     title: "Frontend Engineer Intern",
     period: "June 2023 - Aug 2023",
     company: "Tech Company",
-    description: "Enhanced user experiences on Nextrate Prod & Mobile reports by performing bug & code review fixes by 40%. Built Nextrate Analytics portal using React Js with seamless integration of REST APIs using react-query and axios client. Contributed to TypeScript, updated with new dependencies and integrated with web-sockets for live testing.",
+    description: "Worked on designing a landing page with a focus on providing the best user experience. Gained valuable experience in frontend development and collaborated on improving user interfaces for better engagement.",
     skills: ["React.js", "Redux", "Next.js", "Material UI", "HTML", "CSS", "JavaScript"],
     side: "left"
   },
@@ -16,16 +16,17 @@ const workExperience = [
     title: "Freelance Web Dev Project",
     period: "jan 2024 - Oct 2024",
     company: "Self-employed",
-    description: "Built Play Connect Platform using React.js. Integrated Firebase with MERN, created high level components for real-time chat using Socket.io, GraphQL and Node Js and connected with MongoDB. Reducing API calls by 30%, Developed and tested 45+ API endpoints in Swagger and CI CD deployed to AWS EC2 called Frontend & Backend Services for monitoring.",
-    skills: ["Docker", "TensorFlow", "AWS", "EC2", "PostgreSQL", "Node.js", "JavaScript", "TypeScript", "Node.js", "Rest.js"],
+    description: "Built 6 WordPress websites and 3 full-stack websites. Gained strong knowledge in web development, including creating dynamic websites and integrating various technologies to meet client needs.",
+    skills: [ "HTML", "CSS", "JavaScript","React.js", "Redux", "Next.js", "Wordpress","Figma", "Tailwind CSS","MongoDB"],
     side: "right"
   },
+  
   {
-    title: "Frontend Developer",
+    title: "Full-stack Developer",
     period: "June 2024 - Aug 2024",
     company: "Tech Solutions",
-    description: "Developed and maintained user-facing features using modern frontend technologies.",
-    skills: ["Android", "Java", "Kotlin", "AWS", "Node.js", "Cloud Features", "Firebase", "Figma"],
+    description: "Developed and maintained both front-end and back-end features using modern technologies. Built scalable APIs with Node.js and integrated them with front-end frameworks like React.js, ensuring seamless user experiences. Worked on database management, deployment, and cloud-based solutions.",
+    skills: ["React.js", "Next.js", "Node.js", "MongoDB","PostgreSQL", "Docker","AWS", "Cloud Features", "Firebase", ],
     side: "left"
   }
 ]
@@ -98,7 +99,7 @@ export function Work() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: index * 0.2 }}
+                  transition={{ duration: 0., delay: index * 0.2 }}
                   className={`w-4 h-4 ${dotColor} rounded-full relative z-10 col-start-2`}
                 />
 
