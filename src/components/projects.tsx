@@ -10,9 +10,10 @@ const projects = [
     title: "Restaurant-webapp",
     description: "A modern web application built with React and Next.js",
     image: "/Screenshot 2025-01-13 234450.png",
-    technologies: ["html", "css", "javascript", "react", "firebase"],
+    technologies: ["html", "css", "javascript", "react","nextjs", "firebase"],
     githubUrl: "https://github.com/Nishant2233/Restaurant-webapp-React",
   },
+  //hello
   {
     title: "Multilingual ChatApp",
     description: "A chat application with support for multiple languages",
