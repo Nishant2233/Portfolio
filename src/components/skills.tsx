@@ -30,7 +30,7 @@ const skillsData = {
     { name: 'Express Js', icon: 'E' },
     { name: 'Graph Ql', icon: '◈' },
     { name: 'Python', icon: '🐍' },
-    { name: 'Flask', icon: '🌶️' },
+   
     { name: 'Django', icon: 'D' },
     { name: 'MongoDB', icon: '🍃' },
     { name: 'Firebase', icon: '🔥' },
@@ -42,13 +42,12 @@ const skillsData = {
     { name: 'Vercel', icon: '▲' },
     { name: 'Figma', icon: '🎨' },
     { name: 'WordPress', icon: '📝' },
-  ]
+  ],
 };
 
 export function Skills() {
   const { theme } = useTheme();
 
-  // Check if theme is available before rendering
   if (!theme) {
     return null; // Prevent rendering if theme is not available
   }
@@ -57,10 +56,10 @@ export function Skills() {
 
   return (
     <section id="skills" className="py-24 bg-gradient-to-b from-background to-background/80">
-      <div className="container px-20">
+      <div className="container px-4 sm:px-6 lg:px-20">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Skills</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Skills</h2>
+          <p className="text-sm sm:text-base text-muted-foreground">
             Here are some of my skills on which I have been working on for the past 3 years.
           </p>
         </div>
@@ -69,7 +68,7 @@ export function Skills() {
             <SkillCategory title="Frontend" skills={skillsData.frontend} isDark={isDark} />
             <SkillCategory title="Backend" skills={skillsData.backend} isDark={isDark} />
           </div>
-          <SkillCategory title="Other Skills" skills={skillsData.other} isDark={isDark} className="md:w-1/2 mx-auto" />
+          <SkillCategory title="Other Skills" skills={skillsData.other} isDark={isDark} className="md:w-3/4 lg:w-1/2 mx-auto" />
         </div>
       </div>
     </section>
@@ -88,10 +87,10 @@ function SkillCategory({ title, skills, isDark, className = '' }: SkillCategoryP
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`p-6 rounded-xl ${bgColor} backdrop-blur-sm border ${borderColor} shadow-lg ${className} w-full sm:w-11/12 md:w-3/4 lg:w-full xl:w-full mx-auto`}
+      className={`p-6 rounded-xl ${bgColor} backdrop-blur-sm border ${borderColor} shadow-lg ${className} w-full sm:w-10/12 md:w-11/12 lg:w-full mx-auto`}
     >
-      <h3 className="text-2xl font-semibold mb-6">{title}</h3>
-      <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+      <h3 className="text-xl sm:text-2xl font-semibold mb-6">{title}</h3>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {skills.map((skill, index) => (
           <motion.div
             key={skill.name}
@@ -102,8 +101,8 @@ function SkillCategory({ title, skills, isDark, className = '' }: SkillCategoryP
             className={`px-4 py-2 rounded-full ${skillBg} border ${skillBorder} ${skillHoverBorder} transition-colors`}
           >
             <span className="flex items-center gap-2">
-              <span className="text-lg">{skill.icon}</span>
-              <span className="text-sm font-medium">{skill.name}</span>
+              <span className="text-base sm:text-lg">{skill.icon}</span>
+              <span className="text-xs sm:text-sm font-medium">{skill.name}</span>
             </span>
           </motion.div>
         ))}

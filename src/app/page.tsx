@@ -21,19 +21,25 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setShowPopup(true);
 
-    // Clear the form data
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-    });
+    // Check if all fields are filled
+    if (formData.name && formData.email && formData.message) {
+      setShowPopup(true);
 
-    // Hide the popup after 3 seconds
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 3000);
+      // Clear the form data
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      });
+
+      // Hide the popup after 3 seconds
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
+    } else {
+      alert('Please fill in all fields.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -57,7 +63,10 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
             <div className="max-w-xl mx-auto">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6 p-8 rounded-xl shadow-xl bg-card transition-shadow hover:shadow-2xl"
+              >
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">
                     Name
@@ -66,7 +75,7 @@ export default function Home() {
                     id="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-md border bg-card"
+                    className="w-full px-4 py-2 rounded-md shadow-md bg-card border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Your name"
                   />
                 </div>
@@ -79,7 +88,7 @@ export default function Home() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-md border bg-card"
+                    className="w-full px-4 py-2 rounded-md shadow-md bg-card border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Your email"
                   />
                 </div>
@@ -91,7 +100,7 @@ export default function Home() {
                     id="message"
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-md border bg-card min-h-[150px]"
+                    className="w-full px-4 py-2 rounded-md shadow-md bg-card border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary min-h-[150px]"
                     placeholder="Your message"
                   />
                 </div>

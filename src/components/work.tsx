@@ -7,7 +7,7 @@ const workExperience = [
   {
     title: "Frontend Engineer Intern",
     period: "June 2023 - Aug 2023",
-    company: "Tech Company",
+    company: "Project",
     description: "Worked on designing a landing page with a focus on providing the best user experience. Gained valuable experience in frontend development and collaborated on improving user interfaces for better engagement.",
     skills: ["React.js", "Redux", "Next.js", "Material UI", "HTML", "CSS", "JavaScript"],
     side: "left"
@@ -20,10 +20,9 @@ const workExperience = [
     skills: [ "HTML", "CSS", "JavaScript","React.js", "Redux", "Next.js", "Wordpress","Figma", "Tailwind CSS","MongoDB"],
     side: "right"
   },
-  
   {
     title: "Full-stack Developer",
-    period: "June 2024 - Aug 2024",
+    period: "  Aug 2024",
     company: "Tech Solutions",
     description: "Developed and maintained both front-end and back-end features using modern technologies. Built scalable APIs with Node.js and integrated them with front-end frameworks like React.js, ensuring seamless user experiences. Worked on database management, deployment, and cloud-based solutions.",
     skills: ["React.js", "Next.js", "Node.js", "MongoDB","PostgreSQL", "Docker","AWS", "Cloud Features", "Firebase", ],
@@ -60,7 +59,7 @@ export function Work() {
             {workExperience.map((job, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: job.side === 'left' ? -20 : 20 }}
+                initial={{ opacity: 0, x: job.side === 'left' ? -100 : (job.side === 'right' && index === 1 ? 0 : 100) }}  // Start from outside or center for second box
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
