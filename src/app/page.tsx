@@ -1,53 +1,48 @@
-// pages/Home.tsx
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { useTheme } from '@/lib/theme-provider'
-import { Navbar } from '@/components/navbar'
-import { Hero } from '@/components/hero'
-import { Skills } from '@/components/skills'
-import { Work } from '@/components/work'
-import { Projects } from '@/components/projects' // Correct casing
-
-
+import { useState, useEffect } from 'react';
+import { Navbar } from '@/components/navbar';
+import { Hero } from '@/components/hero';
+import { Skills } from '@/components/skills';
+import { Work } from '@/components/work';
+import { Projects } from '@/components/projects'; // Correct casing
 
 export default function Home() {
-  const { theme } = useTheme()
-  const [showPopup, setShowPopup] = useState(false)
+  const [showPopup, setShowPopup] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
-  })
+  });
 
   useEffect(() => {
-    
-  }, [])
+    // Add any side effects or initialization logic here if needed
+  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setShowPopup(true)
+    e.preventDefault();
+    setShowPopup(true);
 
     // Clear the form data
     setFormData({
       name: '',
       email: '',
       message: '',
-    })
+    });
 
     // Hide the popup after 3 seconds
     setTimeout(() => {
-      setShowPopup(false)
-    }, 3000)
-  }
+      setShowPopup(false);
+    }, 3000);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target
+    const { id, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [id]: value,
-    }))
-  }
+    }));
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -55,7 +50,7 @@ export default function Home() {
       <main>
         <Hero />
         <Skills />
-        <Projects /> {/* Add Projects component here */}
+        <Projects />
         <Work />
         {/* Contact Section */}
         <section id="contact" className="py-24 bg-muted/50">
@@ -133,5 +128,5 @@ export default function Home() {
         </div>
       )}
     </div>
-  )
+  );
 }
