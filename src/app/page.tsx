@@ -9,8 +9,7 @@ import { Skills } from '@/components/skills'
 import { Work } from '@/components/work'
 import { Projects } from '@/components/projects' // Correct casing
 
-import { Github } from 'lucide-react'
-import { motion } from 'framer-motion'
+
 
 export default function Home() {
   const { theme } = useTheme()

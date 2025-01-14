@@ -1,37 +1,36 @@
-// components/Projects.tsx
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { useTheme } from '@/lib/theme-provider'
-import { Github } from 'lucide-react'
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useTheme } from '@/lib/theme-provider';
+import { Github } from 'lucide-react';
 
 const projects = [
   {
-    title: "Restaurant-webapp",
-    description: "A modern web application built with React and Next.js",
-    image: "/Screenshot 2025-01-13 234450.png",
-    technologies: ["html", "css", "javascript", "react","nextjs", "firebase"],
-    githubUrl: "https://github.com/Nishant2233/Restaurant-webapp-React",
-  },
-  //hello
-  {
-    title: "Multilingual ChatApp",
-    description: "A chat application with support for multiple languages",
-    image: "Screenshot 2025-01-14 002624.png",
-    technologies: ["nextjs", "typescript", "tailwind", "firebase", "API"],
-    githubUrl: "https://github.com/Nishant2233/MultilingualChat-App",
+    title: 'Restaurant-webapp',
+    description: 'A modern web application built with React and Next.js',
+    image: '/images/Screenshot 2025-01-13 234450.png', // Corrected image path
+    technologies: ['html', 'css', 'javascript', 'react', 'nextjs', 'firebase'],
+    githubUrl: 'https://github.com/Nishant2233/Restaurant-webapp-React',
   },
   {
-    title: "Support Genie",
-    description: "Full-stack application with modern architecture and AI integration",
-    image: "Screenshot 2024-09-24 190830.png",
-    technologies: ["react", "nodejs", "mongodb", "express", "open AI"],
-    githubUrl: "https://github.com/Nishant2233",
+    title: 'Multilingual ChatApp',
+    description: 'A chat application with support for multiple languages',
+    image: '/images/Screenshot 2025-01-14 002624.png', // Corrected image path
+    technologies: ['nextjs', 'typescript', 'tailwind', 'firebase', 'API'],
+    githubUrl: 'https://github.com/Nishant2233/MultilingualChat-App',
   },
-]
+  {
+    title: 'Support Genie',
+    description: 'Full-stack application with modern architecture and AI integration',
+    image: '/images/Screenshot 2024-09-24 190830.jpg', // Corrected image path
+    technologies: ['react', 'nodejs', 'mongodb', 'express', 'open AI'],
+    githubUrl: 'https://github.com/Nishant2233',
+  },
+];
 
 export function Projects() {
-  const { theme } = useTheme()
+  const { theme } = useTheme();
 
   return (
     <section id="projects" className="py-24 bg-muted/50">
@@ -52,10 +51,12 @@ export function Projects() {
               }`}
             >
               <div className="aspect-video overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="object-cover transition-transform hover:scale-105"
+                <Image
+                  src={project.image} // Use dynamic image path
+                  alt={project.title} // Use project title for alt attribute
+                  width={500}
+                  height={300}
+                  className="object-cover w-full h-full"
                 />
               </div>
               <div className="p-6">
@@ -89,5 +90,5 @@ export function Projects() {
         </div>
       </div>
     </section>
-  )
+  );
 }
