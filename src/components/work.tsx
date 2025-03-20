@@ -17,7 +17,7 @@ const workExperience = [
     period: "jan 2024 - Oct 2024",
     company: "Self-employed",
     description: "Built 6 WordPress websites and 3 full-stack websites. Gained strong knowledge in web development, including creating dynamic websites and integrating various technologies to meet client needs.",
-    skills: [ "HTML", "CSS", "JavaScript","React.js", "Redux", "Next.js", "Wordpress","Figma", "Tailwind CSS","MongoDB"],
+    skills: [ "HTML", "CSS", "JavaScript","React.js", "Next.js", "Wordpress","Figma", "Tailwind CSS","MongoDB"],
     side: "right"
   },
   {

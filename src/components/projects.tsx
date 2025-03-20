@@ -16,12 +16,12 @@ const projects = [
     demoUrl: 'https://nishantrathod.netlify.app/',
   },
   {
-    title: 'Multilingual ChatApp',
-    description: 'A chat application with support for multiple languages',
-    image: '/images/Screenshot 2025-01-14 002624.png',
-    technologies: ['nextjs', 'typescript', 'tailwind', 'firebase', 'API'],
-    githubUrl: 'https://github.com/Nishant2233/MultilingualChat-App',
-    demoUrl: 'https://chatapp-demo.com',
+    title: 'Text2Next',
+    description: 'It is an AI-powered tool that transforms text prompts into responsive websites',
+    image: '/images/Screenshot 2025-03-21 023329.png',
+    technologies: ['nextjs', 'javacript','nodejs', 'tailwind css', 'convex', 'API'],
+    githubUrl: 'https://github.com/Nishant2233/text2next',
+    demoUrl: 'https://text2next.vercel.app/',
   },
   {
     title: 'Support Genie',
