@@ -72,17 +72,16 @@ export function Hero() {
         >
           view project
         </Button>
-        <a
-          href="https://drive.google.com/file/d/1ybZQtJStsQeiw13lN6Nf5hsFJlb45Fo-/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="min-w-[150px]"
-        >
-          <Button size="lg" variant="outline" className="w-full">
+        <Button asChild size="lg" variant="outline" className="min-w-[150px] w-full">
+          <a
+            href="https://drive.google.com/file/d/1ybZQtJStsQeiw13lN6Nf5hsFJlb45Fo-/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Download className="mr-2 h-4 w-4" />
             my resume
-          </Button>
-        </a>
+          </a>
+        </Button>
       </motion.div>
     </section>
   )
