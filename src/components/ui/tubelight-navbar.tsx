@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 interface NavItem {
   name: string
   url: string
-  icon: React.ComponentType<any>
+  icon: React.ComponentType<unknown>
 }
 
 interface NavBarProps {
@@ -18,12 +18,12 @@ interface NavBarProps {
 
 export function NavBar({ items, className }: NavBarProps) {
   const [activeTab, setActiveTab] = useState(items[0].name)
-  const [isMobile, setIsMobile] = useState(false)
+  // const [isMobile, setIsMobile] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
+      // setIsMobile(window.innerWidth < 768)
     }
     const handleScroll = () => {
       setScrolled(window.scrollY > 40)
@@ -71,14 +71,14 @@ export function NavBar({ items, className }: NavBarProps) {
             >
               {idx === 0 ? (
                 <span className="flex items-center gap-2">
-                  <Icon size={18} strokeWidth={2.5} />
+                  <Icon />
                   <span className="font-bold">{item.name}</span>
                 </span>
               ) : (
                 <>
                   <span className="hidden md:inline">{item.name}</span>
                   <span className="md:hidden">
-                    <Icon size={18} strokeWidth={2.5} />
+                    <Icon />
                   </span>
                 </>
               )}
@@ -106,4 +106,4 @@ export function NavBar({ items, className }: NavBarProps) {
       </div>
     </div>
   )
-} 
+}
