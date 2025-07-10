@@ -66,14 +66,14 @@ export function Skills() {
         color={isDark ? '#ffffff' : '#000000'}
         refresh
       />
-      <div className="container px-4 sm:px-6 lg:px-20 relative z-10">
+      <div className="container px-4 sm:px-6 lg:px-20 relative z-10 flex flex-col items-center justify-center">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Skills</h2>
           <p className="text-sm sm:text-base text-muted-foreground">
-            Here are some of my skills on which I have been working on for the past 3 years.
+            Here are some of my skills on which I have been working on for the past 2 years
           </p>
         </div>
-        <div className="grid gap-8">
+        <div className="grid gap-12 w-full max-w-7xl">
           <div className="grid md:grid-cols-2 gap-8">
             <SkillCategory title="Frontend" skills={skillsData.frontend} isDark={isDark} />
             <SkillCategory title="Backend" skills={skillsData.backend} isDark={isDark} />
@@ -86,9 +86,13 @@ export function Skills() {
 }
 
 function SkillCategory({ title, skills, isDark, className = '' }: SkillCategoryProps) {
-  const bgColor = isDark ? 'bg-[#0d1117]' : 'bg-white';
-  const borderColor = isDark ? 'border-primary/10' : 'border-gray-200';
+  // Set background color based on theme
+  const bgColor = isDark ? 'bg-[#1c2330]' : 'bg-white';
+
+  // Skill badge background
   const skillBg = isDark ? 'bg-[#161b22]' : 'bg-gray-50';
+
+  // Skill badge borders
   const skillBorder = isDark ? 'border-primary/10' : 'border-gray-200';
   const skillHoverBorder = isDark ? 'hover:border-primary/30' : 'hover:border-gray-300';
 
@@ -97,9 +101,19 @@ function SkillCategory({ title, skills, isDark, className = '' }: SkillCategoryP
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`p-6 rounded-xl ${bgColor} backdrop-blur-sm border ${borderColor} shadow-lg ${className} w-full sm:w-10/12 md:w-11/12 lg:w-full mx-auto`}
+      // Main card with top-left blue border
+      className={`relative p-6 rounded-xl overflow-hidden ${bgColor} backdrop-blur-sm shadow-lg ${className} w-full sm:w-10/12 md:w-11/12 lg:w-full mx-auto`}
     >
+      {/* Top border */}
+      <div className="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-[#007AFF] to-transparent" />
+
+      {/* Left border */}
+      <div className="absolute top-0 left-0 h-full w-[1px] bg-gradient-to-b from-[#007AFF] to-transparent" />
+
+      {/* Title */}
       <h3 className="text-xl sm:text-2xl font-semibold mb-6">{title}</h3>
+
+      {/* Skill badges */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {skills.map((skill, index) => (
           <motion.div

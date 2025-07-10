@@ -66,7 +66,7 @@ export default function HomePage() {
             <div className="max-w-xl mx-auto">
               <form
                 onSubmit={handleSubmit}
-                className="space-y-6 p-8 rounded-xl bg-card/80 backdrop-blur-sm shadow-[0_0_8px_0_#3b82f640] hover:shadow-[0_0_1px_0_#3b82f6cc] transition-shadow"
+                className="space-y-6 p-8 rounded-xl bg-card/80 backdrop-blur-sm shadow-[0_0_10px_0_#3b82f6] hover:shadow-[0_0_1px_0_#3b82f6cc] transition-shadow"
               >
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">
