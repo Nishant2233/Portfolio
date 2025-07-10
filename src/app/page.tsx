@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
 import { Skills } from '@/components/skills';
 import { Work } from '@/components/work';
 import { Projects } from '@/components/projects'; // Correct casing
+import { SaasNavbar } from '@/components/ui/saas-navbar';
+import { Home, Mail, LogIn, UserPlus, Sun } from 'lucide-react';
 
-export default function Home() {
+export default function HomePage() {
   const [showPopup, setShowPopup] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -52,20 +53,20 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
+      <SaasNavbar />
       <main>
         <Hero />
         <Skills />
         <Projects />
         <Work />
         {/* Contact Section */}
-        <section id="contact" className="py-24 bg-muted/50">
-          <div className="container mx-auto px-4">
+        <section id="contact" className="py-24 bg-background relative overflow-hidden">
+          <div className="container mx-auto px-4 relative z-10">
             <h2 className="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
             <div className="max-w-xl mx-auto">
               <form
                 onSubmit={handleSubmit}
-                className="space-y-6 p-8 rounded-xl shadow-xl bg-card transition-shadow hover:shadow-2xl"
+                className="space-y-6 p-8 rounded-xl bg-card/80 backdrop-blur-sm shadow-[0_0_8px_0_#3b82f640] hover:shadow-[0_0_1px_0_#3b82f6cc] transition-shadow"
               >
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">

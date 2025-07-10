@@ -59,20 +59,100 @@ export function Work() {
             {workExperience.map((job, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: job.side === 'left' ? -100 : (job.side === 'right' && index === 1 ? 0 : 100) }}  // Start from outside or center for second box
+                initial={{ opacity: 0, x: job.side === 'left' ? -100 : (job.side === 'right' && index === 1 ? 0 : 100) }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="relative grid grid-cols-1 md:grid-cols-[1fr,auto,1fr] gap-4 md:gap-8 items-center"
               >
-                {/* Job Card */}
+                {/* Job Card with Moving Border */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
                   className={`${job.side === 'left' ? 'col-start-1' : 'col-start-3'} 
-                               ${bgColor} p-4 md:p-6 rounded-xl border ${borderColor} shadow-lg w-full sm:w-10/12 md:w-11/12`}
+                               ${bgColor} p-4 md:p-6 rounded-xl border ${borderColor} shadow-lg w-full sm:w-10/12 md:w-11/12 relative overflow-hidden`}
                 >
+                  {/* Moving Border Line */}
+                  <motion.div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: `linear-gradient(90deg, transparent 0%, #3b82f6 50%, transparent 100%)`,
+                      height: '2px', // Changed from 4px to 2px
+                      width: '100%',
+                      top: 0
+                    }}
+                    animate={{
+                      x: [0, 100, 0],
+                      opacity: [0.3, 0.8, 0.3]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
+                  
+                  <motion.div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: `linear-gradient(180deg, transparent 0%, #3b82f6 50%, transparent 100%)`,
+                      width: '2px', // Changed from 4px to 2px
+                      height: '100%',
+                      right: 0
+                    }}
+                    animate={{
+                      y: [0, 100, 0],
+                      opacity: [0.3, 0.8, 0.3]
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: 1
+                    }}
+                  />
+                  
+                  <motion.div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: `linear-gradient(90deg, transparent 0%, #3b82f6 50%, transparent 100%)`,
+                      height: '2px', // Changed from 4px to 2px
+                      width: '100%',
+                      bottom: 0
+                    }}
+                    animate={{
+                      x: [100, 0, 100],
+                      opacity: [0.3, 0.8, 0.3]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: 2
+                    }}
+                  />
+                  
+                  <motion.div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: `linear-gradient(180deg, transparent 0%, #3b82f6 50%, transparent 100%)`,
+                      width: '2px', // Changed from 4px to 2px
+                      height: '100%',
+                      left: 0
+                    }}
+                    animate={{
+                      y: [100, 0, 100],
+                      opacity: [0.3, 0.8, 0.3]
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: 3
+                    }}
+                  />
+
                   <div className="mb-2 text-sm md:text-base font-medium text-primary">{job.period}</div>
                   <h3 className="text-lg md:text-xl font-bold mb-2">{job.title}</h3>
                   <p className="text-xs md:text-sm text-muted-foreground mb-2">{job.company}</p>
@@ -98,8 +178,8 @@ export function Work() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0., delay: index * 0.2 }}
-                  className={`w-4 h-4 ${dotColor} rounded-full relative z-10 col-start-2`}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  className={`w-4 h-4 ${dotColor} rounded-full relative z-10 col-start-2 ${index === 1 ? '-mt-2' : ''}`}
                 />
 
                 {/* Spacer */}

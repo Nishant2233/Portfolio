@@ -25,7 +25,6 @@
     --ring: 240 5.9% 10%;
     --radius: 0.5rem;
   }
-  
 
   .dark {
     --background: 240 10% 3.9%;
@@ -48,6 +47,24 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
+  .theme {
+    --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+    --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+  }
+}
+
+/* Grid Beam Background */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark .bg-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 @keyframes fadeIn {
@@ -145,8 +162,182 @@
   animation: float 3s ease-in-out infinite;
 }
 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
 
+@theme inline {
+  @keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+    }
+  15%, 35% {
+    transform: translateZ(0) rotate(90deg);
+    }
+  65%, 85% {
+    transform: translateZ(0) rotate(270deg);
+    }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+    }
+  }
+  @keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
 
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
 
+.animated-skill-border {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.animated-skill-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 9999px;
+  padding: 1.5px;
+  background: conic-gradient(
+    from 0deg,
+    #156ef6 0deg 120deg,
+    #fc1c1c 120deg 240deg,
+    #156ef6 240deg 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: border-rotate 3s linear infinite;
+}
 
+.bauhaus-hover-border {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.bauhaus-hover-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 1rem;
+  padding: 2px;
+  background: conic-gradient(
+    from 0deg,
+    #156ef6 0deg 120deg,
+    #fc1c1c 120deg 240deg,
+    #156ef6 240deg 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.bauhaus-hover-border:hover::before {
+  opacity: 1;
+  animation: bauhaus-border-rotate 2s linear infinite;
+}
 
+@keyframes bauhaus-border-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.moving-blue-line-border {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.moving-blue-line-border::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 1rem;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  /* Hide the border except for the animated line */
+}
+.moving-blue-line-border .blue-line {
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+}
+.moving-blue-line-border .blue-line {
+  animation: blue-line-move 2s linear infinite;
+}
+.moving-blue-line-border .blue-line span {
+  position: absolute;
+  background: #2563eb;
+  border-radius: 2px;
+}
+.moving-blue-line-border .blue-line .top {
+  left: 0; top: 0; height: 2px; width: 0;
+  animation: blue-line-top 2s linear infinite;
+}
+.moving-blue-line-border .blue-line .right {
+  right: 0; top: 0; width: 2px; height: 0;
+  animation: blue-line-right 2s linear infinite;
+  animation-delay: 0.5s;
+}
+.moving-blue-line-border .blue-line .bottom {
+  right: 0; bottom: 0; height: 2px; width: 0;
+  animation: blue-line-bottom 2s linear infinite;
+  animation-delay: 1s;
+}
+.moving-blue-line-border .blue-line .left {
+  left: 0; bottom: 0; width: 2px; height: 0;
+  animation: blue-line-left 2s linear infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes blue-line-top {
+  0% { width: 0; }
+  25% { width: 100%; }
+  100% { width: 100%; }
+}
+@keyframes blue-line-right {
+  0%, 25% { height: 0; }
+  50% { height: 100%; }
+  100% { height: 100%; }
+}
+@keyframes blue-line-bottom {
+  0%, 50% { width: 0; }
+  75% { width: 100%; }
+  100% { width: 100%; }
+}
+@keyframes blue-line-left {
+  0%, 75% { height: 0; }
+  100% { height: 100%; }
+}

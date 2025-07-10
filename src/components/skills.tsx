@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { useTheme } from '@/lib/theme-provider';
+import { Particles } from '@/components/ui/particles';
+// import { CardSpotlight } from '@/components/ui/card-spotlight';
 
 type Skill = {
   name: string;
@@ -55,8 +57,16 @@ export function Skills() {
   const isDark = theme === 'dark';
 
   return (
-    <section id="skills" className="py-24 bg-gradient-to-b from-background to-background/80">
-      <div className="container px-4 sm:px-6 lg:px-20">
+    <section id="skills" className="py-24 bg-gradient-to-b from-background to-background/80 relative overflow-hidden">
+      {/* Particles background */}
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={80}
+        ease={80}
+        color={isDark ? '#ffffff' : '#000000'}
+        refresh
+      />
+      <div className="container px-4 sm:px-6 lg:px-20 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Skills</h2>
           <p className="text-sm sm:text-base text-muted-foreground">

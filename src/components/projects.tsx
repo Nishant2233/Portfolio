@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useTheme } from '@/lib/theme-provider';
 import { Github, ArrowUpRight, ThumbsUp } from 'lucide-react';
+import { Particles } from '@/components/ui/particles';
 
 const projects = [
   {
@@ -46,9 +47,18 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 bg-muted/50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
+    <section id="projects" className="py-24 bg-white dark:bg-black relative overflow-hidden">
+      {/* Particles Background */}
+      <Particles
+        className="absolute inset-0 w-full h-full"
+        quantity={80}
+        staticity={30}
+        ease={50}
+        size={0.3}
+        color={theme === 'dark' ? '#ffffff' : '#666666'}
+      />
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">Featured Projects</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <motion.div
