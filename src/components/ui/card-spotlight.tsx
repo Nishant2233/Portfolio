@@ -60,12 +60,10 @@ export const CardSpotlight = ({
           <CanvasRevealEffect
             animationSpeed={5}
             containerClassName="bg-transparent absolute inset-0 pointer-events-none"
-            colors={[[59, 130, 246],[139, 92, 246]]}
-            dotSize={3}
           />
         )}
       </motion.div>
       <div className="relative z-10 w-full h-full">{children}</div>
     </div>
   );
-}; 
+};
