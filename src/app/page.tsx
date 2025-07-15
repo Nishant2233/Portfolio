@@ -6,7 +6,6 @@ import { Skills } from '@/components/skills';
 import { Work } from '@/components/work';
 import { Projects } from '@/components/projects'; // Correct casing
 import { SaasNavbar } from '@/components/ui/saas-navbar';
-import { Home, Mail, LogIn, UserPlus, Sun } from 'lucide-react';
 
 export default function HomePage() {
   const [showPopup, setShowPopup] = useState(false);
