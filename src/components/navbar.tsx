@@ -52,12 +52,25 @@ export function Navbar() {
             )}
           </Button>
           <button 
-  onClick={() => scrollToSection('contact')} 
-  className={`hidden md:block border px-4 py-2 rounded-md transition-colors 
-    ${theme === 'light' ? 'bg-black text-white hover:bg-accent hover:text-accent-foreground' : 'bg-white text-black hover:bg-accent hover:text-accent-foreground'}`}
->
-  Contact
-</button>
+            onClick={() => scrollToSection('contact')} 
+            className={`hidden md:block px-4 py-2 rounded-md font-semibold relative overflow-hidden transition-colors duration-300
+              ${theme === 'light' ? 'bg-black text-white' : 'bg-white text-black'}
+              animated-skill-border hover:bauhaus-hover-border
+              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
+            `}
+            style={{ minWidth: '110px' }}
+          >
+            <span className="relative z-10">Contact</span>
+            <span
+              className="absolute inset-0 pointer-events-none animate-shimmer opacity-30"
+              style={{
+                background:
+                  theme === 'light'
+                    ? 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%)'
+                    : 'linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%)',
+              }}
+            />
+          </button>
 
           <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
