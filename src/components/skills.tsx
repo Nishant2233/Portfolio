@@ -57,7 +57,7 @@ export function Skills() {
   const isDark = theme === 'dark';
 
   return (
-    <section id="skills" className="py-24 bg-gradient-to-b from-background to-background/80 relative overflow-hidden">
+    <section id="skills" className="py-24 bg-gradient-to-b from-background to-background/80 relative overflow-hidden flex flex-col items-center justify-center min-h-screen">
       {/* Particles background */}
       <Particles
         className="absolute inset-0 z-0"
@@ -66,7 +66,7 @@ export function Skills() {
         color={isDark ? '#ffffff' : '#000000'}
         refresh
       />
-      <div className="container px-4 sm:px-6 lg:px-20 relative z-10 flex flex-col items-center justify-center">
+      <div className="container px-4 sm:px-6 lg:px-20 relative z-10 flex flex-col items-center">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Skills</h2>
           <p className="text-sm sm:text-base text-muted-foreground">
