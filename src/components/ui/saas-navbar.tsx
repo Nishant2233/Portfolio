@@ -42,9 +42,10 @@ export function SaasNavbar() {
           className={cn(
             glass,
             "flex w-full max-w-5xl mx-auto items-center justify-between gap-4 px-6 pointer-events-auto",
+            // Only change height and margin-top on desktop
             scrolled
-              ? "h-14 mt-2 rounded-2xl py-1"
-              : "h-20 mt-0 rounded-3xl py-3"
+              ? "md:h-14 md:mt-2 h-20 mt-0 rounded-2xl py-1"
+              : "md:h-20 md:mt-0 h-20 mt-0 rounded-3xl py-3"
           )}
           style={{ transition: 'max-width 0.3s cubic-bezier(0.4,0,0.2,1)' }}
         >
