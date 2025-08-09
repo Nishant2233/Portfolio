@@ -13,10 +13,20 @@ export function SaasNavbar() {
   const [activeTab, setActiveTab] = useState("Home");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+      
+      // Calculate scroll progress
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      setScrollProgress(Math.min(scrollPercent, 100));
+    };
+    
     window.addEventListener("scroll", handleScroll);
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
@@ -41,7 +51,7 @@ export function SaasNavbar() {
         <div
           className={cn(
             glass,
-            "flex w-full max-w-5xl mx-auto items-center justify-between gap-4 px-6 pointer-events-auto",
+            "flex w-full max-w-5xl mx-auto items-center justify-between gap-4 px-6 pointer-events-auto relative",
             // Only change height and margin-top on desktop
             scrolled
               ? "md:h-14 md:mt-2 h-20 mt-0 rounded-2xl py-1"
@@ -49,6 +59,14 @@ export function SaasNavbar() {
           )}
           style={{ transition: 'max-width 0.3s cubic-bezier(0.4,0,0.2,1)' }}
         >
+          {/* Scroll Progress Bar */}
+          <div className="absolute bottom-0 left-0 w-full h-px bg-gray-200/30 dark:bg-gray-800/30 rounded-full overflow-hidden ml-1 mr-2">
+            <div 
+              className="h-full bg-blue-500 transition-all duration-300 ease-out rounded-full"
+              style={{ width: `${scrollProgress}%` }}
+            />
+          </div>
+          
           {/* Left: Brand (clickable) */}
           <Link
             href="/"

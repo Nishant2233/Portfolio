@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useTheme } from '@/lib/theme-provider'
@@ -8,6 +8,7 @@ import { useTheme } from '@/lib/theme-provider'
 export function Navbar() {
   const { theme, setTheme } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
@@ -23,8 +24,29 @@ export function Navbar() {
     }
   }
 
+  // Handle scroll progress
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const scrollPercent = (scrollTop / docHeight) * 100
+      setScrollProgress(Math.min(scrollPercent, 100))
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <nav className="fixed top-0 w-full z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      {/* Scroll Progress Bar */}
+      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200 dark:bg-gray-800">
+        <div 
+          className="h-full bg-blue-500 transition-all duration-300 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+      
       <div className="container flex h-16 items-center justify-between px-4">
         <a href="#" className="text-xl font-bold md:text-2xl">
           Portfolio
