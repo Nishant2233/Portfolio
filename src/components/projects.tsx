@@ -6,15 +6,18 @@ import { useState } from 'react';
 import { useTheme } from '@/lib/theme-provider';
 import { Github, ArrowUpRight, ThumbsUp } from 'lucide-react';
 import { Particles } from '@/components/ui/particles';
+import { Button } from '@/components/ui/button';
 
 const projects = [
   {
-    title: 'Restaurant-webapp',
-    description: 'A modern web application built with React and Next.js',
-    image: '/images/Screenshot 2025-01-13 234450.png',
-    technologies: ['html', 'css', 'javascript', 'react', 'nextjs', 'firebase'],
-    githubUrl: 'https://github.com/Nishant2233/Restaurant-webapp-React',
-    demoUrl: 'https://nishantrathod.netlify.app/',
+    title: 'PlayMovie',
+    description:
+      "A movie streaming app . Uses API routes for fetching data. Featuring responsive UI and playback features.",
+   
+    image: '/images/image.png',
+    technologies: ['react', 'typescript', 'nodejs', 'shadcn', 'api routes'],
+    githubUrl: 'https://github.com/Nishant2233/playmovie',
+    demoUrl: 'https://playmovie-eight.vercel.app/',
   },
   {
     title: 'Text2Next',
@@ -32,11 +35,20 @@ const projects = [
     githubUrl: 'https://github.com/Nishant2233',
     demoUrl: 'https://supportgenie.com',
   },
+  {
+    title: 'Restaurant-webapp',
+    description: 'A modern web application built with React and Next.js',
+    image: '/images/Screenshot 2025-01-13 234450.png',
+    technologies: ['html', 'css', 'javascript', 'react', 'nextjs', 'firebase'],
+    githubUrl: 'https://github.com/Nishant2233/Restaurant-webapp-React',
+    demoUrl: 'https://nishantrathod.netlify.app/',
+  },
 ];
 
 export function Projects() {
   const { theme } = useTheme();
-  const [liked, setLiked] = useState<boolean[]>(projects.map(() => false)); // Track liked state for each project
+  const [liked, setLiked] = useState<boolean[]>(projects.map(() => false)); 
+  const [showAll, setShowAll] = useState(false);
 
   const toggleLike = (index: number) => {
     setLiked((prev) => {
@@ -48,7 +60,7 @@ export function Projects() {
 
   return (
     <section id="projects" className="py-24 bg-white dark:bg-black relative overflow-hidden">
-      {/* Particles Background */}
+
       <Particles
         className="absolute inset-0 w-full h-full"
         quantity={80}
@@ -60,7 +72,7 @@ export function Projects() {
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">Featured Projects</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, i) => (
+          {projects.slice(0, showAll ? projects.length : 3).map((project, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -143,6 +155,20 @@ export function Projects() {
             </motion.div>
           ))}
         </div>
+        {/* See More / Show Less button */}
+        {projects.length > 3 && (
+          <div className="mt-8 flex justify-center">
+            <Button
+              onClick={() => setShowAll((s) => !s)}
+              aria-expanded={showAll}
+              className={`border-2 border-blue-600 px-6 py-2 rounded-full font-medium transition-colors hover:opacity-95 ${
+                theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'
+              }`}
+            >
+              {showAll ? 'Show less' : 'See more'}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
