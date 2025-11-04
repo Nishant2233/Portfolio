@@ -86,7 +86,7 @@ export function Hero() {
               className="min-w-[150px] w-full"
             >
               <a
-                href="https://drive.google.com/file/d/1ybZQtJStsQeiw13lN6Nf5hsFJlb45Fo-/view?usp=sharing"
+                href="https://drive.google.com/file/d/1m3SfiIRN34LlzlvCrFVMw2gMg5d6givo/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
               >
